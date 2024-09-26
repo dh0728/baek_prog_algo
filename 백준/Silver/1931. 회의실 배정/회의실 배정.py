@@ -7,7 +7,7 @@ N = int(input())
 arr = [list(map(int,input().split())) for _ in range(N)]
 
 arr.sort(key=lambda x:(x[1], x[0])) # 종료시간을 기준으로 오름차순 정렬하기
-
+                                    # 종료시간이 같은 경우 시작시간을 기준으로 오름차순
 cnt = 1
 curr_end=arr[0][1]
 for i in range(1,N):
