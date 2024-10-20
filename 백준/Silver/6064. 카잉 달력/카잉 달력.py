@@ -1,18 +1,19 @@
 import sys
+#sys.stdin=open('input.txt')
+input = sys.stdin.readline
 
-
-def calculate(m, n, x, y):
-    k = x #k를 x로 초기화
-    while k <= m * n: #k의 범위는 m*n을 넘을 수 없기에
-        if (k - x) % m == 0 and (k - y) % n == 0: #2개의 조건을 만족하는 k값을 찾는다.
+def cal_year(M,N,X,Y):
+    k = X
+    while k <=M*N: # 종말의 해는 m,n의 최소공배수
+        if (k-X) % M == 0 and (k-Y) % N == 0: # 순서를 찾으면
             return k
-        k += m #k-x가 m의 배수이기 때문에 k는 x로 초기화해주었기 때문에 m만 더해준다.
+        else:
+            k +=M
     return -1
 
 
-t = int(input())
-
-for _ in range(t):
-    m, n, x, y = map(int, sys.stdin.readline().split())
-
-    print(calculate(m, n, x, y))
+T= int(input())
+for tc in range(1,T+1):
+    M, N, X, Y =map(int,input().split())
+    result=cal_year(M,N,X,Y)
+    print(result)
