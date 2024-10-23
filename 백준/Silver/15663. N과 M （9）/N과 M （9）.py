@@ -4,12 +4,8 @@ input = sys.stdin.readline
 
 def find_seqence(cnt,seq):
     if cnt >= M:
-        result_set.add(tuple(seq))
+        result_set.add(tuple(seq)) # set에 삽입해서 중복 제거
         return
-        # if seq in result:
-        #     return
-        # result.append(seq)
-        # return
     for i in range(N):
         if visited[i]==0:
             visited[i]=1
@@ -20,12 +16,10 @@ N,M = map(int,input().split())
 arr = list(map(int,input().split()))
 arr.sort()
 
-result=[]
 result_set= set()
 visited=[0]*N
 find_seqence(0,[])
-# print(result_set)
 result_list=list(result_set)
-result_list.sort()
+result_list.sort() # 순서 맞춰주기
 for li in result_list:
     print(*li)
