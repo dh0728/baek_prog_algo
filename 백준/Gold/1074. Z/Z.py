@@ -37,3 +37,16 @@ def sol(n,start,i,j):
 N, r, c = map(int,input().split())
 
 sol(N,0,r,c)
+
+# 어떤 사람의 미친 풀이
+# N, r, c = map(int, input().split())
+
+# def sol(N, r, c):
+
+# 	if N == 0:
+# 		return 0
+        
+# 	return 2*(r%2)+(c%2) + 4*sol(N-1, int(r/2), int(c/2))
+
+# print(sol(N, r, c))
+
