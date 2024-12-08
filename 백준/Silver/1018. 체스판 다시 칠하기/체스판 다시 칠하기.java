@@ -27,43 +27,38 @@ public class Main {
             }
         }
         char[][] WB = {
-                        {'W','B','W','B','W','B','W','B'},
-                        {'B','W','B','W','B','W','B','W'}
-                        };
+                {'W','B','W','B','W','B','W','B'},
+                {'B','W','B','W','B','W','B','W'}
+        };
 
         char[][] BW = {
                 {'B','W','B','W','B','W','B','W'},
                 {'W','B','W','B','W','B','W','B'}
         };
 
-        int WB_cnt=change_cnt(WB,maps,N,M);
-        int BW_cnt=change_cnt(BW,maps,N,M);
-
-        if (WB_cnt > BW_cnt){
-            System.out.println(BW_cnt);
-        }else{
-            System.out.println(WB_cnt);
-        }
-    }
-    static int change_cnt(char[][] color, char[][] maps , int N, int M ){
-        int min_cnt =1000000;
+        int min_cnt=1000000;
         for(int x=0; x<N-7; x++){
-            for(int y=0; y<M-7; y++){
-                // 갯수 비교시작
-                int cnt =0;
-                for(int i=x; i<x+8; i++){
-                    if(cnt>min_cnt){ // cnt가 크면 더이상 계산 x
-                        break;
-                    }
-                    for(int j=y; j<y+8; j++){
-                        if(color[(i-x)%2][j-y] != maps[i][j]){
-                            cnt +=1;
-                        }
-                    }
-                }
-                min_cnt=Math.min(min_cnt, cnt);;
+            for(int y=0; y<M-7; y++) {
+                int WB_cnt=change_cnt(maps,WB,x,y,min_cnt);
+                int BW_cnt=change_cnt(maps,BW,x,y,min_cnt);
+                min_cnt=Math.min(min_cnt, WB_cnt);;
+                min_cnt=Math.min(min_cnt, BW_cnt);;
             }
         }
-        return min_cnt;
+        System.out.println(min_cnt);
+    }
+    static int change_cnt(char[][] maps,char[][] color, int x, int y,int min_cnt ) {
+        int cnt = 0;
+        for (int i = x; i < x + 8; i++) {
+            for (int j = y; j < y + 8; j++) {
+                if (cnt > min_cnt){
+                    return min_cnt;
+                }
+                if (color[(i - x) % 2][j - y] != maps[i][j]) {
+                    cnt += 1;
+                }
+            }
+        }
+        return cnt;
     }
 }
