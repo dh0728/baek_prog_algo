@@ -21,7 +21,7 @@ public class Main {
             }
         }
 
-        int[][][][] shapes ={ // I,O,L,T,Z순으로 들어있음
+        int[][][][] shapes ={ // I,O,L,T,Z순으로 들어있음, 회전 및 대칭 모두 들어있음
                 {
                         {{0, 0}, {0, 1}, {0, 2}, {0, 3}},
                         {{0, 0}, {1, 0}, {2, 0}, {3, 0}},
@@ -63,8 +63,8 @@ public class Main {
             int sum=0;
             for(int j=0;j<M;j++){
                 for(int z=0;z<shapes.length;z++){
-                    sum=cnt_max(i,j,shapes[z],maps,N,M);
-                    if(sum>max_sum){
+                    sum=cnt_max(i,j,shapes[z],maps,N,M); // 블록별 최대 숫자 구하는 함수 호출
+                    if(sum>max_sum){ // 제일 큰수 찾으면
                         max_sum=sum;
                     }
                 }
@@ -75,19 +75,19 @@ public class Main {
     }
     static int cnt_max(int x,int y,int[][][] shapes,int[][] maps,int N, int M){
         int max_sum=0;
-        for(int i=0;i<shapes.length;i++){
+        for(int i=0;i<shapes.length;i++){ //회전 혹은 대칭되어 생기는 모든 경우 반복해서 최댓값 찾기
             int sum=0;
             boolean is_val=true;
             for(int j=0;j<shapes[i].length;j++){
                 int nx= x+ shapes[i][j][0];
                 int ny= y+ shapes[i][j][1];
-                if(nx <0 || nx>=N || ny<0 || ny>=M){
+                if(nx <0 || nx>=N || ny<0 || ny>=M){ // 범위 벗어나면 패스
                     is_val =false;
                     break;
                 }
                 sum +=maps[nx][ny];
             }
-            if(is_val && sum >max_sum){
+            if(is_val && sum >max_sum){ // 범위 벗어난적 없고 최댓값이면 값 갱신
                 max_sum=sum;
             }
         }
