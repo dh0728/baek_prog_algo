@@ -1,6 +1,6 @@
 # [level 1] [PCCE 기출문제] 9번 / 지폐 접기 - 340199 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/340199) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/340199?language=java) 
 
 ### 성능 요약
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2025년 02월 18일 01:53:41
+2025년 02월 18일 01:54:21
 
 ### 문제 설명
 
