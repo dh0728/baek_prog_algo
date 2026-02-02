@@ -40,10 +40,9 @@ def can_move(r,c):
     )
     return area != 0
 
-visited = [[False]*(M+1) for _ in range(N+1)]
 
 def bfs(r, c):
-
+    visited = [[False]*(M+1) for _ in range(N+1)]
     visited[r][c] = 1
     dq = deque([(r,c,0)]) # 현재 위치 r, c, 이동횟수
 
