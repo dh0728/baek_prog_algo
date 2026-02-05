@@ -23,6 +23,7 @@ for i in range(N):
         if board[i][j] == 2:
             virus.append((i,j))
 
+safe_zone -= 3
 
 
 def bfs(rc1, rc2, rc3, safe_zone):
@@ -56,15 +57,9 @@ def bfs(rc1, rc2, rc3, safe_zone):
 
             board_copy[nr][nc] = 2
             dq.append((nr, nc))
+            safe_zone -= 1
 
-
-    cnt = 0
-    for i in range(N):
-        for j in range(M):
-            if board_copy[i][j] == 0:
-                cnt +=1
-    
-    return cnt
+    return safe_zone
 
 
 
